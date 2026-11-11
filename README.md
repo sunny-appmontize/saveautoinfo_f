@@ -8,7 +8,8 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 
 ## Meta measurement
 
-- Pixel `2214758409422215` is enabled in `config.js` and sends one PageView automatically on each HTTP(S) page load where `main.js` is included. The root homepage has no scripts.
+- Pixel `2214758409422215` is enabled in the inline `window.AUTOQUOTE_CONFIG` block and sends one PageView automatically on each HTTP(S) page load of `/getoffer/`, `/privacy-policy.html` and `/terms.html`. The root homepage has no scripts.
+- All scripts are inlined directly in the HTML (no separate `.js` files) so updates are not held back by cached scripts. When changing the config or tracking code, update it in all three pages.
 - There is no consent popup, preference panel, or consent-grant event. CTA clicks do not send Lead or other Meta events. Automatic event configuration is disabled.
 - Global Privacy Control, Do Not Track, unsupported URL/referrer parameters, ad blockers, and network restrictions can prevent loading. Known ClickFlare campaign parameters are allowed. Never put personal information in URLs.
 - The site does not read or write the former consent preference. Existing stored choices do not gate initialization.
@@ -17,7 +18,7 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 
 ## Remaining launch checks
 
-The `quoteUrl` is `https://globalvisitlog.com/cf/click` for both buttons. The owner-supplied tag is in `clickflare.js` and loads on the landing page. Markdown escapes were removed from the supplied JavaScript. The tag reads `cftmid` and `cpid` from the landing URL, or the campaign from `cf_cpid`. Without these values it retains the supplied `__CONTAINER_ID__` and `__CAMPAIGN_ID__` placeholders; supply the real identifiers through your campaign URL or replace the placeholders for a working campaign. External tag behavior and attribution must be verified in ClickFlare. This tag is independent of the automatic Meta PageView integration.
+The `quoteUrl` is `https://globalvisitlog.com/cf/click` for both buttons. The owner-supplied tag is inlined at the end of `getoffer/index.html` and loads on the landing page. Markdown escapes were removed from the supplied JavaScript. The tag reads `cftmid` and `cpid` from the landing URL, or the campaign from `cf_cpid`. Without these values it retains the supplied `__CONTAINER_ID__` and `__CAMPAIGN_ID__` placeholders; supply the real identifiers through your campaign URL or replace the placeholders for a working campaign. External tag behavior and attribution must be verified in ClickFlare. This tag is independent of the automatic Meta PageView integration.
 
 No legal operator name has been provided. The contact email is published, but this is not a legal or platform compliance certification. Review the operator disclosures and obligations relevant to your business and audience. No approval or absence of future flags is guaranteed.
 
@@ -37,7 +38,7 @@ Tests cover both ClickFlare-managed CTA links, simulated tag failure fallback, c
 
 ## ClickFlare CTA integration
 
-YES and NO are real anchors, styled as buttons. `main.js` initializes their href from `config.js` before the deferred ClickFlare tag rewrites links. The click handler leaves native navigation intact, so the vendor’s rewritten handler runs. On tag load failure, the supplied vendor script restores the direct click URL. That fallback still requires a valid ClickFlare visitor/campaign session; it cannot fix missing campaign IDs or blocked cookies.
+YES and NO are real anchors, styled as buttons. The inline main script initializes their href from `AUTOQUOTE_CONFIG.quoteUrl` before the ClickFlare tag (inlined after it) rewrites links. The click handler leaves native navigation intact, so the vendor’s rewritten handler runs. On tag load failure, the supplied vendor script restores the direct click URL. That fallback still requires a valid ClickFlare visitor/campaign session; it cannot fix missing campaign IDs or blocked cookies.
 
 ### Verified redirect campaign
 
