@@ -50,7 +50,7 @@ const server = http.createServer((req,res)=>{
         assert.equal(clicks,0,'Must use vendor setter, not direct navigation');
         assert.equal(await page.evaluate(()=>typeof window.fbq),'function');
         const events=await page.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>Array.from(e)));
-        assert.deepEqual(events,[['trackSingle','1492655519595047','PageView']]);
+        assert.deepEqual(events,[['trackSingle','2214758409422215','PageView']]);
         await page.evaluate(()=>{window.testClickflareHandled=null;document.querySelector('[data-lead-choice]').click();});
         assert.equal(await page.evaluate(()=>window.testClickflareHandled),null,'Duplicate click blocked');
         await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow')));
@@ -71,7 +71,7 @@ const server = http.createServer((req,res)=>{
       if(expected){
         await p.waitForFunction(()=>!!window.fbq);
         const events=await p.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>Array.from(e)));
-        assert.deepEqual(events,[['trackSingle','1492655519595047','PageView']]);
+        assert.deepEqual(events,[['trackSingle','2214758409422215','PageView']]);
       }else assert.equal(meta,0);
       assert.equal(await p.locator('#privacy-banner,[data-privacy-settings]').count(),0);
       await c.close();

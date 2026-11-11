@@ -8,7 +8,7 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 
 ## Meta measurement
 
-- Pixel `1492655519595047` is enabled in `config.js` and sends one PageView automatically on each HTTP(S) page load where `main.js` is included. The root homepage has no scripts.
+- Pixel `2214758409422215` is enabled in `config.js` and sends one PageView automatically on each HTTP(S) page load where `main.js` is included. The root homepage has no scripts.
 - There is no consent popup, preference panel, or consent-grant event. CTA clicks do not send Lead or other Meta events. Automatic event configuration is disabled.
 - Global Privacy Control, Do Not Track, unsupported URL/referrer parameters, ad blockers, and network restrictions can prevent loading. Known ClickFlare campaign parameters are allowed. Never put personal information in URLs.
 - The site does not read or write the former consent preference. Existing stored choices do not gate initialization.
