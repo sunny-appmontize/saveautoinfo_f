@@ -256,27 +256,10 @@ window.AUTOQUOTE_CONFIG = {
   var started = false;
   var navigating = false;
   var buttons = document.querySelectorAll("[data-lead-choice]");
-  function safeMeasurementUrl(value) {
-    if (!value) return true;
-    try {
-      var url = new URL(value);
-      if (url.hash) return false;
-      return Array.from(url.searchParams).every(function (entry) {
-        // ClickFlare adds an opaque visit token and a numeric landing token
-        // during redirect campaigns. Permit their expected formats only.
-        if (entry[0] === "cep") return /^[a-zA-Z0-9+/_=-]{1,4096}$/.test(entry[1]);
-        if (entry[0] === "lptoken") return /^\d{1,40}$/.test(entry[1]);
-        return /^(fbclid|cpid|cftmid|utm_source|utm_medium|utm_campaign|utm_content|utm_term|campaign_id|adset_id|ad_id)$/.test(entry[0]) &&
-          /^[a-zA-Z0-9_.~-]{1,500}$/.test(entry[1]);
-      });
-    } catch (_) { return false; }
-  }
-
   function canTrack() {
-    // Restrict measurement URLs to campaign identifiers; never put personal data in them.
+    // Load on every HTTP(S) visit, whatever campaign parameters the tracker adds.
     return config.metaTrackingEnabled === true && !privacySignal &&
-      /^https?:$/.test(location.protocol) && safeMeasurementUrl(location.href) &&
-      safeMeasurementUrl(document.referrer) && /^\d+$/.test(pixelId) && !/^0+$/.test(pixelId);
+      /^https?:$/.test(location.protocol) && /^\d+$/.test(pixelId) && !/^0+$/.test(pixelId);
   }
 
   function startPixel() {

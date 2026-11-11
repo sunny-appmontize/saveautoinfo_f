@@ -11,7 +11,7 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 - Pixel `2214758409422215` is enabled in the inline `window.AUTOQUOTE_CONFIG` block and sends one PageView automatically on each HTTP(S) page load of `/getoffer/`, `/privacy-policy.html` and `/terms.html`. The root homepage has no scripts.
 - All scripts are inlined directly in the HTML (no separate `.js` files) so updates are not held back by cached scripts. When changing the config or tracking code, update it in all three pages.
 - There is no consent popup, preference panel, or consent-grant event. CTA clicks do not send Lead or other Meta events. Automatic event configuration is disabled.
-- Global Privacy Control, Do Not Track, unsupported URL/referrer parameters, ad blockers, and network restrictions can prevent loading. Known ClickFlare campaign parameters are allowed. Never put personal information in URLs.
+- Global Privacy Control, Do Not Track, ad blockers, and network restrictions can prevent loading. URL parameters do not affect loading, so any ClickFlare or ad parameters (`lptoken`, `cep`, `cpid`, `ad_name`, etc.) work. Never put personal information in URLs.
 - The site does not read or write the former consent preference. Existing stored choices do not gate initialization.
 - This configuration does not guarantee legal/platform compliance; consent obligations depend on the audience and applicable requirements.
 - The YES/NO links continue using ClickFlare independently. They require a valid campaign visit/session.
@@ -42,4 +42,4 @@ YES and NO are real anchors, styled as buttons. The inline main script initializ
 
 ### Verified redirect campaign
 
-Campaign ID: `6ae32805a09e8bf230a30fb5`. Entry URL: `https://globalvisitlog.com/cf/r/6ae32805a09e8bf230a30fb5`. In a fresh browser, enter through this URL before using the CTA. The campaign supplies `cpid`, `cep`, and `lptoken` to the landing page. The Meta URL guard accepts these identifiers in their expected formats. Direct entry to the bare landing page has no campaign session and can return “Could not find cookie for cta click.” Both CTA answers use the same offer URL; there is no separate answer attribution configured.
+Campaign ID: `6ae32805a09e8bf230a30fb5`. Entry URL: `https://globalvisitlog.com/cf/r/6ae32805a09e8bf230a30fb5`. In a fresh browser, enter through this URL before using the CTA. The campaign supplies `cpid`, `cep`, and `lptoken` to the landing page. Direct entry to the bare landing page has no campaign session and can return “Could not find cookie for cta click.” Both CTA answers use the same offer URL; there is no separate answer attribution configured.
