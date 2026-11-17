@@ -83,13 +83,35 @@ const server = http.createServer((req,res)=>{
     const page=await context.newPage();
     for(const width of [390,1440]){
       await page.setViewportSize({width,height:900});
-      for(const file of ['/getoffer/','/privacy-policy.html','/terms.html']){
+      for(const file of ['/getoffer/','/quote/','/privacy-policy.html','/terms.html']){
         await page.goto(base+file);
         assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
       }
     }
+    // /quote/: PageView on load; CTAs use QUOTE_PAGE_CONFIG.ctaUrl. Unset = inert, no Lead.
+    {
+      const q=await browser.newContext();
+      await q.route(/https:\/\/.*facebook\.(net|com)\//,r=>r.fulfill({contentType:'application/javascript',body:'/* stub */'}));
+      await q.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());
+      const qp=await q.newPage();await qp.goto(base+'/quote/');
+      const ctaUrl=await qp.evaluate(()=>String(window.QUOTE_PAGE_CONFIG.ctaUrl||'').trim());
+      const n=await qp.locator('[data-cta]').count();assert(n>=5,'quote CTAs present');
+      // Stop real navigation after page handlers run, so the event queue can be inspected.
+      await qp.evaluate(()=>window.addEventListener('click',e=>e.preventDefault()));
+      await qp.locator('.option').first().click();
+      const qev=await qp.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>e[2]));
+      if(ctaUrl){
+        const hrefs=await qp.locator('[data-cta]').evaluateAll(els=>els.map(e=>e.getAttribute('href')));
+        assert(hrefs.every(h=>h===ctaUrl||h.startsWith('javascript:window.clickflare.l=')),'quote CTAs use ctaUrl');
+        assert.deepEqual(qev,['PageView','Lead']);
+      }else{
+        assert.deepEqual(qev,['PageView'],'no Lead while ctaUrl is unset');
+        assert.equal(qp.url(),base+'/quote/');
+      }
+      await q.close();
+    }
     await page.goto(base+'/');assert.equal((await page.locator('body').innerText()).trim(),'Happy World!');assert.equal(await page.locator('script').count(),0);
     await context.close();
-    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, and root page.');
+    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, /quote/ CTA config, and root page.');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

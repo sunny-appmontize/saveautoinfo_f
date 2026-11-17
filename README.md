@@ -43,3 +43,14 @@ YES and NO are real anchors, styled as buttons. The inline main script initializ
 ### Verified redirect campaign
 
 Campaign ID: `6ae32805a09e8bf230a30fb5`. Entry URL (old `globalvisitlog.com` tracker; replace with the `trk.viewapproval.com` entry URL from ClickFlare): `https://globalvisitlog.com/cf/r/6ae32805a09e8bf230a30fb5`. In a fresh browser, enter through this URL before using the CTA. The campaign supplies `cpid`, `cep`, and `lptoken` to the landing page. Direct entry to the bare landing page has no campaign session and can return “Could not find cookie for cta click.” Both CTA answers use the same offer URL; there is no separate answer attribution configured.
+
+## `/quote/` eligibility page
+
+A second, self-contained landing page (inline CSS and JS, shared `assets/` and policy pages) at `/quote/`. It has a "How many vehicles?" card (1 / 2 / 3+), a main CTA, a loyalty-band CTA, and a mobile sticky CTA. Every element with `data-cta` is a CTA.
+
+To launch it, edit only two marked spots in `quote/index.html`:
+
+1. **CTA URL**: set `ctaUrl` in the `QUOTE_PAGE_CONFIG` block (section 1). While it is empty, CTAs do nothing and no Lead is sent (a console warning is logged).
+2. **Tracking tag**: paste the full `<script>…</script>` in section 3, between `TRACKING TAG` and `/TRACKING TAG`. Keep it after the page logic so the CTA hrefs are set before the tag rewrites them. Paste from a code block so the backticks survive.
+
+Meta behavior matches `/getoffer/`: PageView on load, and one `Lead` per CTA click with duplicates blocked. Both are skipped under GPC/DNT. It uses the same Pixel ID by default (`metaPixelId` in the config).
