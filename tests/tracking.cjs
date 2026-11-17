@@ -88,30 +88,49 @@ const server = http.createServer((req,res)=>{
         assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
       }
     }
-    // /quote/: PageView on load; CTAs use QUOTE_PAGE_CONFIG.ctaUrl. Unset = inert, no Lead.
-    {
+    // /quote/: same ClickFlare + Meta behavior as /getoffer/, across its CTA types.
+    const quoteTarget='https://trk.viewapproval.com/cf/click/1';
+    for(const failTag of [false,true]) for(const sel of ['.option >> nth=0','.option >> nth=2','.q-card .cta-main','.band .cta-main']){
       const q=await browser.newContext();
-      await q.route(/https:\/\/.*facebook\.(net|com)\//,r=>r.fulfill({contentType:'application/javascript',body:'/* stub */'}));
-      await q.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());
-      const qp=await q.newPage();await qp.goto(base+'/quote/');
-      const ctaUrl=await qp.evaluate(()=>String(window.QUOTE_PAGE_CONFIG.ctaUrl||'').trim());
-      const n=await qp.locator('[data-cta]').count();assert(n>=5,'quote CTAs present');
-      // Stop real navigation after page handlers run, so the event queue can be inspected.
-      await qp.evaluate(()=>window.addEventListener('click',e=>e.preventDefault()));
-      await qp.locator('.option').first().click();
-      const qev=await qp.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>e[2]));
-      if(ctaUrl){
-        const hrefs=await qp.locator('[data-cta]').evaluateAll(els=>els.map(e=>e.getAttribute('href')));
-        assert(hrefs.every(h=>h===ctaUrl||h.startsWith('javascript:window.clickflare.l=')),'quote CTAs use ctaUrl');
-        assert.deepEqual(qev,['PageView','Lead']);
+      let qMeta=0,qTag,qClicks=0,qSeen;const qReady=new Promise(r=>{qSeen=r;});
+      await q.route(/https:\/\/.*facebook\.(net|com)\//,r=>{qMeta++;return r.fulfill({contentType:'application/javascript',body:'/* stub */'});});
+      await q.route('https://trk.viewapproval.com/cf/tags/**',r=>{
+        qTag=new URL(r.request().url());qSeen();
+        if(failTag)return r.abort();
+        return r.fulfill({contentType:'application/javascript',body:`Object.defineProperty(window.clickflare,'l',{configurable:true,set(url){window.testClickflareHandled=url;}});`});
+      });
+      await q.route(quoteTarget,r=>{qClicks++;return r.fulfill({contentType:'text/html',body:'Mock offer destination'});});
+      const qp=await q.newPage();
+      await qp.goto(base+'/quote/?cftmid=test-container&cpid=test-campaign');
+      assert.equal(await qp.evaluate(()=>window.QUOTE_PAGE_CONFIG.ctaUrl),quoteTarget);
+      assert.equal(await qp.evaluate(()=>window.QUOTE_PAGE_CONFIG.metaPixelId),'2214758409422215');
+      await qReady;
+      assert.equal(qTag.pathname,'/cf/tags/test-container');
+      assert.equal(qTag.searchParams.get('cpid'),'test-campaign');
+      const cta=qp.locator(sel);
+      if(failTag){
+        await qp.waitForFunction(u=>[...document.querySelectorAll('[data-cta]')].every(a=>a.getAttribute('href')===u),quoteTarget);
+        await cta.click();await qp.waitForURL(quoteTarget);assert.equal(qClicks,1);
       }else{
-        assert.deepEqual(qev,['PageView'],'no Lead while ctaUrl is unset');
-        assert.equal(qp.url(),base+'/quote/');
+        await qp.waitForFunction(()=>!!Object.getOwnPropertyDescriptor(window.clickflare,'l'));
+        const hrefs=await qp.locator('[data-cta]').evaluateAll(els=>els.map(e=>e.getAttribute('href')));
+        assert(hrefs.every(h=>h.startsWith('javascript:window.clickflare.l=')),'all quote CTAs rewritten by ClickFlare');
+        await cta.click();
+        await qp.waitForFunction(u=>window.testClickflareHandled===u,quoteTarget);
+        assert.equal(qClicks,0,'Must use vendor setter, not direct navigation');
+        const qev=await qp.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>Array.from(e)));
+        assert.deepEqual(qev,[['trackSingle','2214758409422215','PageView'],['trackSingle','2214758409422215','Lead']]);
+        await qp.evaluate(()=>{window.testClickflareHandled=null;document.querySelector('.band .cta-main').click();});
+        assert.equal(await qp.evaluate(()=>window.testClickflareHandled),null,'Duplicate click blocked');
+        assert.equal(await qp.evaluate(()=>fbq.queue.filter(e=>e[2]==='Lead').length),1,'One Lead only');
+        await qp.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow')));
+        assert.equal(await cta.getAttribute('aria-disabled'),null);
       }
+      assert.equal(qMeta,1);
       await q.close();
     }
     await page.goto(base+'/');assert.equal((await page.locator('body').innerText()).trim(),'Happy World!');assert.equal(await page.locator('script').count(),0);
     await context.close();
-    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, /quote/ CTA config, and root page.');
+    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, /quote/ ClickFlare CTAs (all types, fallback, Lead, duplicate guard), and root page.');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

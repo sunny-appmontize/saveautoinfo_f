@@ -48,9 +48,9 @@ Campaign ID: `6ae32805a09e8bf230a30fb5`. Entry URL (old `globalvisitlog.com` tra
 
 A second, self-contained landing page (inline CSS and JS, shared `assets/` and policy pages) at `/quote/`. It has a "How many vehicles?" card (1 / 2 / 3+), a main CTA, a loyalty-band CTA, and a mobile sticky CTA. Every element with `data-cta` is a CTA.
 
-To launch it, edit only two marked spots in `quote/index.html`:
+To change them, edit only two marked spots in `quote/index.html`:
 
-1. **CTA URL**: set `ctaUrl` in the `QUOTE_PAGE_CONFIG` block (section 1). While it is empty, CTAs do nothing and no Lead is sent (a console warning is logged).
-2. **Tracking tag**: paste the full `<script>…</script>` in section 3, between `TRACKING TAG` and `/TRACKING TAG`. Keep it after the page logic so the CTA hrefs are set before the tag rewrites them. Paste from a code block so the backticks survive.
+1. **CTA URL** (currently `https://trk.viewapproval.com/cf/click/1`): set `ctaUrl` in the `QUOTE_PAGE_CONFIG` block (section 1). While it is empty, CTAs do nothing and no Lead is sent (a console warning is logged).
+2. **Tracking tag** (currently the same trk.viewapproval.com ClickFlare tag as `/getoffer/`): paste the full `<script>…</script>` in section 3, between `TRACKING TAG` and `/TRACKING TAG`. Keep it after the page logic so the CTA hrefs are set before the tag rewrites them. Paste from a code block so the backticks survive.
 
 Meta behavior matches `/getoffer/`: PageView on load, and one `Lead` per CTA click with duplicates blocked. Both are skipped under GPC/DNT. It uses the same Pixel ID by default (`metaPixelId` in the config).
