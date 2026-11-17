@@ -6,7 +6,7 @@ const path = require('node:path');
 const http = require('node:http');
 const {chromium} = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const root = path.resolve(__dirname, '..');
-const target = 'https://globalvisitlog.com/cf/click';
+const target = 'https://trk.viewapproval.com/cf/click/1';
 const server = http.createServer((req,res)=>{
   let file = path.join(root,new URL(req.url,'http://localhost').pathname);
   if(fs.existsSync(file)&&fs.statSync(file).isDirectory()) file=path.join(file,'index.html');
@@ -21,11 +21,11 @@ const server = http.createServer((req,res)=>{
   try{
     for(const failTag of [false,true]) for(const label of ['YES','NO']){
       const context=await browser.newContext();
-      // Fresh visitors get PageView automatically; clicks must not send Lead.
+      // Fresh visitors get PageView automatically; each CTA click sends one Lead.
       let metaRequests=0,tagRequest,clicks=0,tagSeen;
       const tagReady=new Promise(resolve=>{tagSeen=resolve;});
       await context.route(/https:\/\/.*facebook\.(net|com)\//,r=>{metaRequests++;return r.fulfill({contentType:'application/javascript',body:'/* Meta stub: events remain in queue for assertions. */'});});
-      await context.route('https://globalvisitlog.com/cf/tags/**',r=>{
+      await context.route('https://trk.viewapproval.com/cf/tags/**',r=>{
         tagRequest=new URL(r.request().url());tagSeen();
         if(failTag)return r.abort();
         // Model the remote tag's link setter without creating real campaign traffic.
@@ -39,18 +39,18 @@ const server = http.createServer((req,res)=>{
       assert.equal(tagRequest.searchParams.get('cpid'),'test-campaign');
       const link=page.getByRole('link',{name:label,exact:true});
       if(failTag){
-        await page.waitForFunction(()=>document.querySelector('[data-lead-choice]').getAttribute('href')==='https://globalvisitlog.com/cf/click');
+        await page.waitForFunction(()=>document.querySelector('[data-lead-choice]').getAttribute('href')==='https://trk.viewapproval.com/cf/click/1');
         await link.click();await page.waitForURL(target);assert.equal(clicks,1);
       }else{
         await page.waitForFunction(()=>!!Object.getOwnPropertyDescriptor(window.clickflare,'l'));
         assert((await link.getAttribute('href')).startsWith('javascript:window.clickflare.l='));
         await link.click();
-        await page.waitForFunction(()=>window.testClickflareHandled==='https://globalvisitlog.com/cf/click');
+        await page.waitForFunction(()=>window.testClickflareHandled==='https://trk.viewapproval.com/cf/click/1');
         assert.equal(await page.evaluate(()=>window.testClickflareHandled),target);
         assert.equal(clicks,0,'Must use vendor setter, not direct navigation');
         assert.equal(await page.evaluate(()=>typeof window.fbq),'function');
         const events=await page.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>Array.from(e)));
-        assert.deepEqual(events,[['trackSingle','2214758409422215','PageView']]);
+        assert.deepEqual(events,[['trackSingle','2214758409422215','PageView'],['trackSingle','2214758409422215','Lead']]);
         await page.evaluate(()=>{window.testClickflareHandled=null;document.querySelector('[data-lead-choice]').click();});
         assert.equal(await page.evaluate(()=>window.testClickflareHandled),null,'Duplicate click blocked');
         await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow')));
@@ -64,9 +64,10 @@ const server = http.createServer((req,res)=>{
       if(mode!=='unanswered') await c.addInitScript(value=>localStorage.setItem('autoquote-ad-consent-v1',JSON.stringify({value,at:Date.now()})),mode==='rejected'?'rejected':'accepted');
       if(mode==='gpc') await c.addInitScript(()=>Object.defineProperty(navigator,'globalPrivacyControl',{value:true}));
       await c.route(/https:\/\/.*facebook\.(net|com)\//,r=>{meta++;return r.abort();});
-      await c.route('https://globalvisitlog.com/**',r=>r.abort());
+      await c.route('https://trk.viewapproval.com/**',r=>r.abort());
       const p=await c.newPage();await p.goto(base+'/getoffer/'+(mode==='sensitive-url'?'?email=private@example.com':''));
-      const expected=mode==='unanswered'||mode==='rejected';
+      // Only browser privacy signals (GPC/DNT) block Meta; URL parameters never do.
+      const expected=mode!=='gpc';
       assert.equal(await p.evaluate(()=>typeof fbq),expected?'function':'undefined');
       if(expected){
         await p.waitForFunction(()=>!!window.fbq);
@@ -78,7 +79,7 @@ const server = http.createServer((req,res)=>{
     }
     const context=await browser.newContext();
     await context.route(/https:\/\/.*facebook\.(net|com)\//,r=>r.abort());
-    await context.route('https://globalvisitlog.com/**',r=>r.abort());
+    await context.route('https://trk.viewapproval.com/**',r=>r.abort());
     const page=await context.newPage();
     for(const width of [390,1440]){
       await page.setViewportSize({width,height:900});
@@ -89,6 +90,6 @@ const server = http.createServer((req,res)=>{
     }
     await page.goto(base+'/');assert.equal((await page.locator('body').innerText()).trim(),'Happy World!');assert.equal(await page.locator('script').count(),0);
     await context.close();
-    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView only without popup, responsive layouts, and root page.');
+    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, and root page.');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

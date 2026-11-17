@@ -10,7 +10,7 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 
 - Pixel `2214758409422215` is enabled in the inline `window.AUTOQUOTE_CONFIG` block and sends one PageView automatically on each HTTP(S) page load of `/getoffer/`, `/privacy-policy.html` and `/terms.html`. The root homepage has no scripts.
 - All scripts are inlined directly in the HTML (no separate `.js` files) so updates are not held back by cached scripts. When changing the config or tracking code, update it in all three pages.
-- There is no consent popup, preference panel, or consent-grant event. CTA clicks do not send Lead or other Meta events. Automatic event configuration is disabled.
+- There is no consent popup, preference panel, or consent-grant event. Each YES/NO click sends one Meta `Lead` event (no answer or personal data); a duplicate click is blocked. Automatic event configuration is disabled.
 - Global Privacy Control, Do Not Track, ad blockers, and network restrictions can prevent loading. URL parameters do not affect loading, so any ClickFlare or ad parameters (`lptoken`, `cep`, `cpid`, `ad_name`, etc.) work. Never put personal information in URLs.
 - The site does not read or write the former consent preference. Existing stored choices do not gate initialization.
 - This configuration does not guarantee legal/platform compliance; consent obligations depend on the audience and applicable requirements.
@@ -18,13 +18,13 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 
 ## Remaining launch checks
 
-The `quoteUrl` is `https://globalvisitlog.com/cf/click` for both buttons. The owner-supplied tag is inlined at the end of `getoffer/index.html` and loads on the landing page. Markdown escapes were removed from the supplied JavaScript. The tag reads `cftmid` and `cpid` from the landing URL, or the campaign from `cf_cpid`. Without these values it retains the supplied `__CONTAINER_ID__` and `__CAMPAIGN_ID__` placeholders; supply the real identifiers through your campaign URL or replace the placeholders for a working campaign. External tag behavior and attribution must be verified in ClickFlare. This tag is independent of the automatic Meta PageView integration.
+The `quoteUrl` is `https://trk.viewapproval.com/cf/click/1` for both buttons. The owner-supplied tag is inlined at the end of `getoffer/index.html` and loads on the landing page. Markdown escapes were removed from the supplied JavaScript. The tag reads `cftmid` and `cpid` from the landing URL, or the campaign from `cf_cpid`. Without these values it retains the supplied `__CONTAINER_ID__` and `__CAMPAIGN_ID__` placeholders; supply the real identifiers through your campaign URL or replace the placeholders for a working campaign. External tag behavior and attribution must be verified in ClickFlare. This tag is independent of the automatic Meta PageView integration.
 
 No legal operator name has been provided. The contact email is published, but this is not a legal or platform compliance certification. Review the operator disclosures and obligations relevant to your business and audience. No approval or absence of future flags is guaranteed.
 
 At the owner’s request, the original flag, savings claims, customer count, review logos, static “Real-Time Quotes” table, and supplied testimonials have been restored on `/getoffer/`. These figures and testimonials have not been independently verified. The table is static, and the Terms disclose that it is not a live insurer feed. Substantiate the claims and review permissions before advertising.
 
-After hosting on HTTPS, verify the domain and Pixel in your Meta account as applicable. Use Events Manager Test Events with a browser that permits measurement: confirm automatic PageView, click YES or NO, and confirm that no Lead event is sent. Test browser privacy signals separately: no Pixel should load, and the CTA should still work. Review any extra events configured remotely in your account. Live Meta receipt has not been verified from this workspace.
+After hosting on HTTPS, verify the domain and Pixel in your Meta account as applicable. Use Events Manager Test Events with a browser that permits measurement: confirm automatic PageView, click YES or NO, and confirm that one Lead event is sent. Test browser privacy signals separately: no Pixel should load, and the CTA should still work. Review any extra events configured remotely in your account. Live Meta receipt has not been verified from this workspace.
 
 ## Automated checks
 
@@ -42,4 +42,4 @@ YES and NO are real anchors, styled as buttons. The inline main script initializ
 
 ### Verified redirect campaign
 
-Campaign ID: `6ae32805a09e8bf230a30fb5`. Entry URL: `https://globalvisitlog.com/cf/r/6ae32805a09e8bf230a30fb5`. In a fresh browser, enter through this URL before using the CTA. The campaign supplies `cpid`, `cep`, and `lptoken` to the landing page. Direct entry to the bare landing page has no campaign session and can return “Could not find cookie for cta click.” Both CTA answers use the same offer URL; there is no separate answer attribution configured.
+Campaign ID: `6ae32805a09e8bf230a30fb5`. Entry URL (old `globalvisitlog.com` tracker; replace with the `trk.viewapproval.com` entry URL from ClickFlare): `https://globalvisitlog.com/cf/r/6ae32805a09e8bf230a30fb5`. In a fresh browser, enter through this URL before using the CTA. The campaign supplies `cpid`, `cep`, and `lptoken` to the landing page. Direct entry to the bare landing page has no campaign session and can return “Could not find cookie for cta click.” Both CTA answers use the same offer URL; there is no separate answer attribution configured.
