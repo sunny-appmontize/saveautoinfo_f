@@ -54,3 +54,9 @@ To change them, edit only two marked spots in `quote/index.html`:
 2. **Tracking tag** (currently the same trk.viewapproval.com ClickFlare tag as `/getoffer/`): paste the full `<script>…</script>` in section 3, between `TRACKING TAG` and `/TRACKING TAG`. Keep it after the page logic so the CTA hrefs are set before the tag rewrites them. Paste from a code block so the backticks survive.
 
 Meta behavior matches `/getoffer/`: PageView on load, and one `Lead` per CTA click with duplicates blocked. Both are skipped under GPC/DNT. It uses the same Pixel ID by default (`metaPixelId` in the config).
+
+## `/getyours/` advertorial page (dummy content)
+
+A one-screen advertorial-style page at `/getyours/`: "Advertorial" label, navy title banner, red strip, two-column hero (headline, eligibility checklist, urgency note, green CTA, star rating, trust chips) with a portrait image on desktop (hidden on mobile). Copy marked `DUMMY` in the HTML is placeholder text, including the sample star rating, which must be replaced with real, verifiable figures or removed before launch.
+
+Same structure as `/quote/`: set `ctaUrl` in `GETYOURS_PAGE_CONFIG` (section 1) and paste the tracking tag in section 3. The banner title, headline, image and button are all `data-cta` links. Until `ctaUrl` is set, they do nothing and no Lead is sent. Meta: PageView on load, one Lead per CTA click.

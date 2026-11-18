@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>Auto Insurance Rate Check | Save Auto Info</title>
+    <style>
+        :root {
+            --navy: #03426a;
+            --green: #08a01b;
+            --green-dark: #067d15;
+            --gray: #6d7377;
+            --line: #dcdcdc;
+            --text: #1a1a1a;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body { margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background: #f5f8fb;
+        }
+
+        header {
+            padding: 14px 16px;
+            background: var(--navy);
+            color: #fff;
+            text-align: center;
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        main {
+            flex: 1;
+            display: grid;
+            place-items: center;
+            padding: 40px 16px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 480px;
+            padding: 32px 24px;
+            border-radius: 16px;
+            background: #fff;
+            border: 1px solid var(--line);
+            box-shadow: 0 16px 40px -20px rgba(3, 66, 106, .4);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: clamp(24px, 5vw, 30px);
+            line-height: 1.2;
+            color: var(--navy);
+        }
+
+        p {
+            margin: 0 0 24px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #3b4248;
+        }
+
+        .cta-btn {
+            display: block;
+            padding: 18px 20px;
+            border-radius: 10px;
+            background: var(--green);
+            box-shadow: 0 4px 0 var(--green-dark);
+            color: #fff;
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover { background: #069a19; }
+        .cta-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--green-dark); }
+        .cta-btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+
+        .note {
+            margin: 14px 0 0;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        footer {
+            padding: 20px 16px 28px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        footer a { color: var(--gray); margin: 0 8px; }
+    </style>
+</head>
+
+<body>
+    <header>Save Auto Info</header>
+
+    <main>
+        <div class="card">
+            <h1>Check Your Auto Insurance Rate</h1>
+            <p>See options available for drivers in your area. Free, no obligation.</p>
+
+            <!-- CTA: ClickFlare click URL (rewritten by the tag below) -->
+            <a href="https://trk.viewapproval.com/cf/click/1" class="cta-btn" data-cta>Check My Rate &gt;&gt;</a>
+
+            <p class="note">Opens an external quote referral service.</p>
+        </div>
+    </main>
+
+    <footer>
+        Save Auto Info is a quote referral service, not an insurance provider. Rates and savings are not guaranteed.
+        <br /><br />
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="mailto:contact@saveautoinfo.com">contact@saveautoinfo.com</a>
+    </footer>
+
+    <!-- =========================================================
+         TEST PAGE: ClickFlare tag only. No Meta Pixel on this page.
+         ========================================================= -->
+    <script>
+    // ClickFlare landing-page tag supplied by the site owner.
+!function(){"use strict";const e="lp_ref",t="cpid",n="lpurl",c="https://trk.viewapproval.com",r="(?<domain>http(?:s?)://[^/]*)/cf/click",i="(?:(?:/(?<cta>[a-zA-Z0-9_-]+)/?)|(?:/))?",s=`^${r}${i}(?:$|(\\?.*))`,o=`javascript:window.clickflare.l="(?<original_link>${r}${i}("|(\\?[^"]*"))).*`,a=()=>new RegExp(s,""),l=()=>new RegExp(o,"");function u(e){const t=e.match(l());if(t){const{original_link:n}=t.groups||{};if(n){return n.slice(0,-1)}return e}return e}function d(e){const t=function(e){return e.replace(a(),(e,...t)=>{const{domain:n}=t[t.length-1];return e.replace(n,c)})}(e);return`javascript:window.clickflare.l="${t}"; void 0;`}function f(e,t){if(t&&e&&t.apply(document,[e]),/loaded|interactive|complete/.test(document.readyState))for(let n=0,c=document.links.length;n<c;n++)if(a().test(document.links[n].href)){const e=document.links[n];window.clickflare.links_replaced.has(e)||(e.href=d(e.href),window.clickflare.links_replaced.add(e))}}!function(r,i){const s=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(e,t){const n=this.listeners[e]||[];n.includes(t)||n.push(t),this.listeners[e]=n},dispatchEvent:function(e,t){t&&(this.customParams[e]=t),(this.listeners[e]||[]).forEach(e=>e(t))},push:function(e,t){t&&(this.customParams[e]=t),(this.listeners[e]||[]).forEach(e=>e(t))}},document.onreadystatechange=e=>f(e,s),f(null,s),setTimeout(()=>{!function(r,i){const s=function(r,i){const s=new URL(`${c}${r}`);(function(e){const t="{",n=t+t,c="_",r=c+c;return e.startsWith(n)||e.startsWith(r)})(i)||s.searchParams.set(t,i);return s.searchParams.append(e,document.referrer),s.searchParams.append(n,location.href),s.searchParams.append("lpt",document.title),s.searchParams.append("t",(new Date).getTime().toString()),s.toString()}(r,i),o=document.createElement("script"),a=document.scripts[0];o.async=1,o.src=s,o.onerror=()=>{!function(){for(let e=0,t=document.links.length;e<t;e++){const t=document.links[e];l().test(decodeURI(t.href))&&setTimeout(()=>{t&&t.setAttribute("href",u(decodeURI(t.href)))})}}()},a.parentNode?.insertBefore(o,a)}(r,i)}))}(`/cf/tags/${new URL(window.location.href).searchParams.get("cftmid")||"__CONTAINER_ID__"}`,function(){const e=new URL(window.location.href).searchParams.get(t),n=function(){const e=new RegExp("(^| )cf_cpid=([^;]+)"),t=document.cookie.match(e);return t&&t.pop()||null}();return e||n||"__CAMPAIGN_ID__"}())}();
+    </script>
+</body>
+
+</html>

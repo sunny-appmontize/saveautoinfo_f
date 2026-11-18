@@ -83,7 +83,7 @@ const server = http.createServer((req,res)=>{
     const page=await context.newPage();
     for(const width of [390,1440]){
       await page.setViewportSize({width,height:900});
-      for(const file of ['/getoffer/','/quote/','/privacy-policy.html','/terms.html']){
+      for(const file of ['/getoffer/','/quote/','/getyours/','/test/','/privacy-policy.html','/terms.html']){
         await page.goto(base+file);
         assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
       }
@@ -129,8 +129,53 @@ const server = http.createServer((req,res)=>{
       assert.equal(qMeta,1);
       await q.close();
     }
+    // /getyours/: PageView on load; CTAs use GETYOURS_PAGE_CONFIG.ctaUrl. Unset = inert, no Lead.
+    {
+      const g=await browser.newContext();
+      await g.route(/https:\/\/.*facebook\.(net|com)\//,r=>r.fulfill({contentType:'application/javascript',body:'/* stub */'}));
+      await g.route(/^https?:\/\/(?!127\.0\.0\.1)/,r=>r.abort());
+      const gp=await g.newPage();await gp.goto(base+'/getyours/');
+      const gUrl=await gp.evaluate(()=>String(window.GETYOURS_PAGE_CONFIG.ctaUrl||'').trim());
+      assert(await gp.locator('[data-cta]').count()>=4,'getyours CTAs present');
+      await gp.evaluate(()=>window.addEventListener('click',e=>e.preventDefault()));
+      await gp.locator('.cta-btn').click();
+      const gev=await gp.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>e[2]));
+      if(gUrl){
+        const hrefs=await gp.locator('[data-cta]').evaluateAll(els=>els.map(e=>e.getAttribute('href')));
+        assert(hrefs.every(h=>h===gUrl||h.startsWith('javascript:window.clickflare.l=')),'getyours CTAs use ctaUrl');
+        assert.deepEqual(gev,['PageView','Lead']);
+      }else{
+        assert.deepEqual(gev,['PageView'],'no Lead while ctaUrl is unset');
+        assert.equal(gp.url(),base+'/getyours/');
+      }
+      await g.close();
+    }
+    // /test/: ClickFlare only, no Meta.
+    for(const failTag of [false,true]){
+      const t=await browser.newContext();let tMeta=0,tClicks=0,tTag,tSeen;const tReady=new Promise(r=>{tSeen=r;});
+      const tUrl='https://trk.viewapproval.com/cf/click/1';
+      await t.route(/https:\/\/.*facebook\.(net|com)\//,r=>{tMeta++;return r.abort();});
+      await t.route('https://trk.viewapproval.com/cf/tags/**',r=>{tTag=new URL(r.request().url());tSeen();
+        if(failTag)return r.abort();
+        return r.fulfill({contentType:'application/javascript',body:`Object.defineProperty(window.clickflare,'l',{configurable:true,set(url){window.testClickflareHandled=url;}});`});});
+      await t.route(tUrl,r=>{tClicks++;return r.fulfill({contentType:'text/html',body:'Mock offer destination'});});
+      const tp=await t.newPage();await tp.goto(base+'/test/?cftmid=test-container&cpid=test-campaign');
+      await tReady;assert.equal(tTag.pathname,'/cf/tags/test-container');assert.equal(tTag.searchParams.get('cpid'),'test-campaign');
+      assert.equal(await tp.evaluate(()=>typeof window.fbq),'undefined','no Meta on /test/');
+      const btn=tp.locator('.cta-btn');
+      if(failTag){
+        await tp.waitForFunction(u=>document.querySelector('.cta-btn').getAttribute('href')===u,tUrl);
+        await btn.click();await tp.waitForURL(tUrl);assert.equal(tClicks,1);
+      }else{
+        await tp.waitForFunction(()=>!!Object.getOwnPropertyDescriptor(window.clickflare,'l'));
+        assert((await btn.getAttribute('href')).startsWith('javascript:window.clickflare.l='));
+        await btn.click();await tp.waitForFunction(u=>window.testClickflareHandled===u,tUrl);assert.equal(tClicks,0);
+      }
+      assert.equal(tMeta,0,'no Meta requests on /test/');
+      await t.close();
+    }
     await page.goto(base+'/');assert.equal((await page.locator('body').innerText()).trim(),'Happy World!');assert.equal(await page.locator('script').count(),0);
     await context.close();
-    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, /quote/ ClickFlare CTAs (all types, fallback, Lead, duplicate guard), and root page.');
+    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, /quote/ ClickFlare CTAs (all types, fallback, Lead, duplicate guard), /getyours/ CTA config, /test/ ClickFlare-only CTA, and root page.');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

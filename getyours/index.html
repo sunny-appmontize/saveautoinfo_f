@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- DUMMY: replace title/description with final copy -->
+    <title>2026 Auto Insurance Savings Check | Save Auto Info</title>
+    <meta name="description" content="See if you qualify for lower auto insurance rates. Free, no obligation." />
+    <meta name="theme-color" content="#03426a" />
+
+    <style>
+        /* =========================================================
+           TOKENS
+           ========================================================= */
+        :root {
+            --navy: #03426a;
+            --navy-dark: #022c47;
+            --red: #8a0b0b;
+            --green: #08a01b;
+            --green-dark: #067d15;
+            --amber-bg: #fff8e1;
+            --amber-line: #f0c040;
+            --gray-line: #dcdcdc;
+            --gray-mid: #6d7377;
+            --text: #1a1a1a;
+            --radius: 8px;
+            --font-head: Georgia, "DM Serif Display", "Times New Roman", serif;
+            --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: var(--font-body);
+            color: var(--text);
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        /* Links that behave like plain text (banner, headline, image). */
+        .plain-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================================================
+           ADVERTORIAL TAG + BANNER + URGENCY STRIP
+           ========================================================= */
+        .advertorial-bar {
+            padding: 8px 16px;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--gray-mid);
+            border-bottom: 1px solid var(--gray-line);
+        }
+
+        .header-banner {
+            background: var(--navy);
+            text-align: center;
+            padding: 14px 16px;
+        }
+
+        .header-banner .title {
+            margin: 0;
+            font-family: var(--font-head);
+            font-weight: 400;
+            font-size: clamp(19px, 4vw, 27px);
+            color: #fff;
+            letter-spacing: .01em;
+        }
+
+        .urgency-bar {
+            height: 10px;
+            background: var(--red);
+        }
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+        .hero {
+            padding: 36px 16px 44px;
+        }
+
+        .hero-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 44px;
+            align-items: start;
+        }
+
+        .date-line {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--red);
+        }
+
+        .date-line::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--red);
+            animation: blink 1.6s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: .25; }
+        }
+
+        .hero-headline {
+            margin: 0 0 10px;
+            font-family: var(--font-head);
+            font-weight: 400;
+            font-size: clamp(28px, 4.2vw, 42px);
+            line-height: 1.15;
+            color: var(--navy);
+            text-wrap: balance;
+        }
+
+        .hero-sub {
+            margin: 0 0 26px;
+            font-size: clamp(19px, 2.6vw, 25px);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* ---------- Criteria ---------- */
+        .criteria-list {
+            list-style: none;
+            margin: 0 0 26px;
+            padding: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .criteria-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 17px;
+            line-height: 1.4;
+        }
+
+        .check {
+            position: relative;
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            margin-top: 1px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .check::after {
+            content: "";
+            position: absolute;
+            left: 8px;
+            top: 4px;
+            width: 5px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+        }
+
+        /* ---------- Urgency note ---------- */
+        .urgency-note {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 460px;
+            margin-bottom: 26px;
+            padding: 12px 14px;
+            border: 1px solid var(--amber-line);
+            border-radius: var(--radius);
+            background: var(--amber-bg);
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .urgency-note svg {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+        }
+
+        /* ---------- CTA ---------- */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            max-width: 460px;
+            padding: 19px 24px;
+            border-radius: var(--radius);
+            background: var(--green);
+            color: #fff;
+            font-size: clamp(19px, 2.6vw, 23px);
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 0 var(--green-dark);
+            animation: pulse 2.4s ease infinite;
+            transition: background .2s, transform .1s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .cta-btn:hover {
+            background: #069a19;
+            transform: translateY(-1px);
+            animation: none;
+        }
+
+        .cta-btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 var(--green-dark);
+        }
+
+        .cta-btn:focus-visible {
+            outline: 3px solid var(--navy);
+            outline-offset: 3px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 0 var(--green-dark), 0 0 0 0 rgba(8, 160, 27, .5); }
+            50% { box-shadow: 0 4px 0 var(--green-dark), 0 0 0 10px rgba(8, 160, 27, 0); }
+        }
+
+        /* a choice is in flight */
+        [data-cta][aria-disabled="true"] {
+            pointer-events: none;
+        }
+
+        .cta-btn.is-selected {
+            background: var(--green-dark);
+        }
+
+        /* ---------- Reviews (DUMMY) ---------- */
+        .reviews-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 460px;
+            margin-top: 16px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 2px;
+        }
+
+        .stars svg {
+            width: 20px;
+            height: 20px;
+            fill: #f5a623;
+        }
+
+        .reviews-text {
+            font-size: 14px;
+            color: var(--gray-mid);
+        }
+
+        .reviews-text strong {
+            color: var(--text);
+        }
+
+        /* ---------- Trust points ---------- */
+        .trust-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            max-width: 460px;
+            margin-top: 16px;
+        }
+
+        .trust-row span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border: 1px solid var(--gray-line);
+            border-radius: 99px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3b4248;
+        }
+
+        .trust-row svg {
+            width: 14px;
+            height: 14px;
+            color: var(--green);
+        }
+
+        /* ---------- Right image ---------- */
+        .hero-img {
+            position: relative;
+            display: block;
+            aspect-ratio: 400 / 627;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: linear-gradient(170deg, #0a609c 0%, #03426a 100%);
+            box-shadow: 0 20px 40px -20px rgba(3, 66, 106, .55);
+        }
+
+        .hero-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 62% center;
+        }
+
+        .hero-img-label {
+            position: absolute;
+            left: 50%;
+            bottom: 14px;
+            transform: translateX(-50%);
+            padding: 6px 12px;
+            border-radius: 4px;
+            background: rgba(3, 66, 106, .9);
+            color: #fff;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+        .section-divider {
+            max-width: 940px;
+            height: 1px;
+            margin: 0 auto;
+            background: var(--gray-line);
+        }
+
+        .footer {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 24px 16px 32px;
+            text-align: center;
+        }
+
+        .disclaimer {
+            margin: 0 0 16px;
+            font-size: 12px;
+            line-height: 1.65;
+            color: var(--gray-mid);
+            text-align: left;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 24px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--gray-mid);
+            text-underline-offset: 2px;
+        }
+
+        .footer-copy {
+            margin: 0;
+            font-size: 13px;
+            color: var(--gray-mid);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .hero-inner {
+                grid-template-columns: 1fr 300px;
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 24px 16px 32px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            /* image hidden on mobile, same as the reference layout */
+            .hero-right {
+                display: none;
+            }
+
+            .cta-btn,
+            .urgency-note,
+            .reviews-bar,
+            .trust-row {
+                max-width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--
+      Every element with [data-cta] is a CTA. Its href is set at runtime
+      from GETYOURS_PAGE_CONFIG.ctaUrl (see the config block below).
+      Like the reference, the banner, headline and image are clickable too.
+    -->
+
+    <!-- ===================== ADVERTORIAL TAG ===================== -->
+    <div class="advertorial-bar">Advertorial</div>
+
+    <!-- ===================== HEADER BANNER ===================== -->
+    <header class="header-banner">
+        <a href="#" class="plain-link" data-cta>
+            <!-- DUMMY -->
+            <p class="title">2026 Auto Insurance Savings Check</p>
+        </a>
+    </header>
+
+    <div class="urgency-bar" aria-hidden="true"></div>
+
+    <main>
+        <!-- ===================== HERO ===================== -->
+        <section class="hero">
+            <div class="hero-inner">
+
+                <!-- LEFT COLUMN -->
+                <div class="hero-left">
+                    <div class="date-line">Updated <span data-today>today</span></div>
+
+                    <a href="#" class="plain-link" data-cta>
+                        <!-- DUMMY -->
+                        <h1 class="hero-headline">New 2026 Rate Check Helps Drivers Compare Lower Auto Insurance Rates</h1>
+                    </a>
+                    <!-- DUMMY -->
+                    <p class="hero-sub">See If You Qualify In About A Minute</p>
+
+                    <!-- Eligibility criteria (DUMMY) -->
+                    <ul class="criteria-list">
+                        <li><span class="check" aria-hidden="true"></span><span>Must be a <strong>licensed driver</strong></span></li>
+                        <li><span class="check" aria-hidden="true"></span><span>Must be a <strong>U.S. resident</strong></span></li>
+                        <li><span class="check" aria-hidden="true"></span><span>Must <strong>own or lease a vehicle</strong></span></li>
+                    </ul>
+
+                    <!-- Urgency note (DUMMY) -->
+                    <div class="urgency-note" role="note">
+                        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                            <path d="M20 4L36 34H4L20 4Z" fill="#f0c040" stroke="#c8961a" stroke-width="2" />
+                            <rect x="18.5" y="15" width="3" height="11" rx="1.5" fill="#7a5a00" />
+                            <circle cx="20" cy="29" r="1.8" fill="#7a5a00" />
+                        </svg>
+                        <span>Rates change often. <strong>Check today's options before they update.</strong></span>
+                    </div>
+
+                    <!-- CTA -->
+                    <a href="#" class="cta-btn" data-cta>Check My Eligibility &gt;&gt;</a>
+
+                    <!-- Star reviews (DUMMY: replace with real, verifiable ratings or remove) -->
+                    <div class="reviews-bar">
+                        <div class="stars" aria-hidden="true">
+                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
+                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
+                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
+                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
+                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
+                        </div>
+                        <span class="reviews-text"><strong>4.8 out of 5</strong> · 1,234 reviews (sample)</span>
+                    </div>
+
+                    <!-- Trust points (used instead of "as seen in news" logos) -->
+                    <div class="trust-row">
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>100% Free</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>No obligation</span>
+                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>No SSN to start</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN (desktop only) -->
+                <div class="hero-right">
+                    <a href="#" class="hero-img" data-cta tabindex="-1" aria-hidden="true">
+                        <!-- DUMMY image: replace with a 400x627 portrait image -->
+                        <img src="../assets/banner-img.jpg" alt="" width="400" height="627" />
+                        <span class="hero-img-label">Drivers are checking new rates</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div class="section-divider"></div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <p class="disclaimer">
+            <strong>Advertorial. Disclaimer:</strong> Save Auto Info is an insurance quote referral service, not an
+            insurance provider, carrier, or government program. We do not issue policies or bind coverage. Quotes and
+            potential savings are not guaranteed and may not be available to everyone. Actual rates depend on coverage,
+            driving history, vehicle, location, eligibility, and other factors.
+        </p>
+        <nav class="footer-links" aria-label="Footer navigation">
+            <a href="../privacy-policy.html">Privacy Policy</a>
+            <a href="../terms.html">Terms &amp; Conditions</a>
+            <a href="mailto:contact@saveautoinfo.com">contact@saveautoinfo.com</a>
+        </nav>
+        <p class="footer-copy">&copy; <span data-year>2026</span> Save Auto Info</p>
+    </footer>
+
+
+    <!-- =========================================================
+         1) PAGE CONFIG  ← edit here
+         ========================================================= -->
+    <script>
+    window.GETYOURS_PAGE_CONFIG = {
+      // Master switch: false disables all Meta loading and events.
+      metaTrackingEnabled: true,
+      metaPixelId: "2214758409422215",
+
+      // >>> PASTE CTA URL HERE (e.g. "https://trk.example.com/cf/click/1") <<<
+      // Every [data-cta] link on the page uses this URL.
+      // While empty, links do nothing and no Lead event is sent.
+      ctaUrl: ""
+    };
+    </script>
+
+    <!-- =========================================================
+         2) PAGE LOGIC: Meta PageView on load, one Lead per CTA click.
+            Do not edit unless changing behavior.
+         ========================================================= -->
+    <script>
+    (function () {
+      "use strict";
+
+      var config = window.GETYOURS_PAGE_CONFIG || {};
+      var pixelId = String(config.metaPixelId || "");
+      var ctaUrl = String(config.ctaUrl || "").trim();
+      var privacySignal = navigator.globalPrivacyControl === true || navigator.doNotTrack === "1";
+      var started = false;
+      var navigating = false;
+      var ctas = document.querySelectorAll("[data-cta]");
+
+      function canTrack() {
+        return config.metaTrackingEnabled === true && !privacySignal &&
+          /^https?:$/.test(location.protocol) && /^\d+$/.test(pixelId) && !/^0+$/.test(pixelId);
+      }
+
+      function startPixel() {
+        if (started || !canTrack()) return;
+        started = true;
+        if (!window.fbq) {
+          var fbq = window.fbq = function () {
+            fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
+          };
+          window._fbq = fbq;
+          fbq.push = fbq;
+          fbq.loaded = true;
+          fbq.version = "2.0";
+          fbq.queue = [];
+        }
+        window.fbq("set", "autoConfig", false, pixelId);
+        window.fbq("init", pixelId);
+        window.fbq("trackSingle", pixelId, "PageView");
+        var script = document.createElement("script");
+        script.async = true;
+        script.src = "https://connect.facebook.net/en_US/fbevents.js";
+        document.head.appendChild(script);
+      }
+
+      function resetCtas() {
+        navigating = false;
+        ctas.forEach(function (el) {
+          el.removeAttribute("aria-disabled");
+          el.classList.remove("is-selected");
+        });
+      }
+
+      startPixel();
+
+      if (!ctaUrl) {
+        console.warn("[getyours] GETYOURS_PAGE_CONFIG.ctaUrl is empty. CTA links are inactive until it is set.");
+      }
+
+      ctas.forEach(function (el) {
+        // Set real hrefs BEFORE the tracking tag below runs, so it can rewrite them.
+        if (ctaUrl) el.setAttribute("href", ctaUrl);
+
+        el.addEventListener("click", function (event) {
+          if (!ctaUrl) { event.preventDefault(); return; }
+          if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          if (navigating) { event.preventDefault(); return; }
+          navigating = true;
+          ctas.forEach(function (item) { item.setAttribute("aria-disabled", "true"); });
+          el.classList.add("is-selected");
+          // One Meta Lead per CTA click (no personal data is sent).
+          if (started && typeof window.fbq === "function") {
+            window.fbq("trackSingle", pixelId, "Lead");
+          }
+          // Leave the default link action intact so the tracking tag's handler runs.
+        });
+      });
+
+      // Re-enable links when the visitor returns with the back button.
+      window.addEventListener("pageshow", resetCtas);
+
+      var today = document.querySelector("[data-today]");
+      if (today) {
+        try {
+          today.textContent = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+        } catch (e) { /* keep fallback text */ }
+      }
+      var year = document.querySelector("[data-year]");
+      if (year) year.textContent = String(new Date().getFullYear());
+    })();
+    </script>
+
+    <!-- =========================================================
+         3) TRACKING TAG  ← paste the ClickFlare (or other) tag here
+            Paste the full <script>...</script> below this comment.
+            Must stay AFTER the page logic above.
+            Paste it from a code block so backticks (`) are not lost.
+         ========================================================= -->
+
+    <!-- /TRACKING TAG -->
+</body>
+
+</html>
