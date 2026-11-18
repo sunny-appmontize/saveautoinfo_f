@@ -55,8 +55,12 @@ To change them, edit only two marked spots in `quote/index.html`:
 
 Meta behavior matches `/getoffer/`: PageView on load, and one `Lead` per CTA click with duplicates blocked. Both are skipped under GPC/DNT. It uses the same Pixel ID by default (`metaPixelId` in the config).
 
-## `/getyours/` advertorial page (dummy content)
+## `/getyours/` advertorial page
 
-A one-screen advertorial-style page at `/getyours/`: "Advertorial" label, navy title banner, red strip, two-column hero (headline, eligibility checklist, urgency note, green CTA, star rating, trust chips) with a portrait image on desktop (hidden on mobile). Copy marked `DUMMY` in the HTML is placeholder text, including the sample star rating, which must be replaced with real, verifiable figures or removed before launch.
+A layout and copy clone of the supplied gutter-replacement advertorial reference (same CSS, fonts, structure and text), at `/getyours/`. The banner title, headline, button and right-hand image all link to `ctaUrl` (`https://trk.viewapproval.com/cf/click/1`), followed by the trk.viewapproval.com ClickFlare tag. Meta: PageView on load, one Lead per CTA click (Pixel `2214758409422215`).
 
-Same structure as `/quote/`: set `ctaUrl` in `GETYOURS_PAGE_CONFIG` (section 1) and paste the tracking tag in section 3. The banner title, headline, image and button are all `data-cta` links. Until `ctaUrl` is set, they do nothing and no Lead is sent. Meta: PageView on load, one Lead per CTA click.
+The roof photo and the "as seen in" news-logo image are hotlinked from the reference's image host (convertri.imgix.net) and can change or vanish; replace them with your own copies for production. The Google reviews strip is HTML so the numbers can be edited: update `data-rating` and `data-review-count` in `getyours/index.html` with your real figures (it ships with the reference's 4.9 / 1,152). Privacy/Terms link to this site's real policy pages. Note the gutter topic differs from this site's auto-insurance Privacy/Terms pages.
+
+## Policy page return links
+
+On `/privacy-policy.html` and `/terms.html`, the return links (`data-return-link`: logo, "← Back to quotes", "Return to insurance options", footer "Home") send visitors back to the landing page they came from on this site, including its URL parameters (`cpid`, `cftmid`, etc.). The origin page is remembered for the browser session, so going Privacy → Terms still returns to the original lander. If the visitor arrived directly or from another site, the links fall back to `/getoffer/`.

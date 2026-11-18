@@ -1,555 +1,499 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <!-- DUMMY: replace title/description with final copy -->
-    <title>2026 Auto Insurance Savings Check | Save Auto Info</title>
-    <meta name="description" content="See if you qualify for lower auto insurance rates. Free, no obligation." />
-    <meta name="theme-color" content="#03426a" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>2026 Gutter Replacement Relief</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* =========================================================
-           TOKENS
-           ========================================================= */
-        :root {
-            --navy: #03426a;
-            --navy-dark: #022c47;
-            --red: #8a0b0b;
-            --green: #08a01b;
-            --green-dark: #067d15;
-            --amber-bg: #fff8e1;
-            --amber-line: #f0c040;
-            --gray-line: #dcdcdc;
-            --gray-mid: #6d7377;
-            --text: #1a1a1a;
-            --radius: 8px;
-            --font-head: Georgia, "DM Serif Display", "Times New Roman", serif;
-            --font-body: "Barlow", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
+  :root {
+    --navy: #03426a;
+    --red: #770808;
+    --green: #08a01b;
+    --white: #ffffff;
+    --off-white: #f5f5f0;
+    --gray-light: #d8d8d8;
+    --gray-mid: #6d7377;
+    --text: #1a1a1a;
+    --font-head: 'DM Serif Display', serif;
+    --font-body: 'Barlow', sans-serif;
+    --radius: 8px;
+  }
 
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-        }
+  body {
+    font-family: var(--font-body);
+    background: var(--white);
+    color: var(--text);
+    min-height: 100vh;
+  }
 
-        body {
-            min-height: 100vh;
-            font-family: var(--font-body);
-            color: var(--text);
-            background: #fff;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
+  /* ── ADVERTORIAL TAG ── */
+  .advertorial-bar {
+    background: var(--white);
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--gray-mid);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gray-light);
+  }
 
-        img {
-            display: block;
-            max-width: 100%;
-        }
+  /* ── HEADER BANNER ── */
+  .header-banner {
+    background: var(--navy);
+    text-align: center;
+    padding: 14px 20px;
+  }
+  .header-banner h1 {
+    font-family: var(--font-head);
+    color: var(--white);
+    font-size: clamp(18px, 4vw, 26px);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
 
-        a {
-            color: inherit;
-        }
+  /* ── RED URGENCY BAR ── */
+  .urgency-bar {
+    background: var(--red);
+    height: 10px;
+  }
 
-        /* Links that behave like plain text (banner, headline, image). */
-        .plain-link {
-            text-decoration: none;
-            color: inherit;
-        }
+  /* ── HERO SECTION ── */
+  .hero {
+    background: #ffffff;
+    padding: 32px 20px 40px;
+  }
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    align-items: start;
+  }
 
-        /* =========================================================
-           ADVERTORIAL TAG + BANNER + URGENCY STRIP
-           ========================================================= */
-        .advertorial-bar {
-            padding: 8px 16px;
-            text-align: center;
-            font-size: 12px;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--gray-mid);
-            border-bottom: 1px solid var(--gray-line);
-        }
+  /* ── HERO LEFT ── */
+  .hero-left {}
+  .hero-headline {
+    font-family: var(--font-head);
+    font-size: clamp(26px, 4vw, 38px);
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .hero-sub {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 28px;
+    line-height: 1.3;
+  }
 
-        .header-banner {
-            background: var(--navy);
-            text-align: center;
-            padding: 14px 16px;
-        }
+  /* ── CRITERIA LIST ── */
+  .criteria-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .criteria-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .criteria-list li .check {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .criteria-list li .check::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 9px;
+    border: 2px solid #fff;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+  .criteria-list li strong { font-weight: 700; }
 
-        .header-banner .title {
-            margin: 0;
-            font-family: var(--font-head);
-            font-weight: 400;
-            font-size: clamp(19px, 4vw, 27px);
-            color: #fff;
-            letter-spacing: .01em;
-        }
+  /* ── URGENCY NOTE ── */
+  .urgency-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 28px;
+    background: #fff8e1;
+    border: 1px solid #f0c040;
+    border-radius: var(--radius);
+    padding: 12px 14px;
+  }
+  .urgency-note .warn-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+  .urgency-note span strong { font-weight: 700; }
 
-        .urgency-bar {
-            height: 10px;
-            background: var(--red);
-        }
+  /* ── CTA BUTTON ── */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    max-width: 440px;
+    background: var(--green);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: clamp(18px, 2.5vw, 22px);
+    font-weight: 700;
+    text-align: center;
+    padding: 18px 24px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.1s;
+    line-height: 1.2;
+  }
+  .cta-btn:hover { background: #069a19; transform: translateY(-1px); }
+  .cta-btn:active { transform: scale(0.98); }
 
-        /* =========================================================
-           HERO
-           ========================================================= */
-        .hero {
-            padding: 36px 16px 44px;
-        }
+  /* ── REVIEWS IMAGE PLACEHOLDER ── */
+  .reviews-bar {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 440px;
+  }
+  .stars {
+    display: flex;
+    gap: 2px;
+  }
+  .star {
+    width: 20px;
+    height: 20px;
+    fill: #f5a623;
+  }
+  .reviews-text {
+    font-size: 13px;
+    color: var(--gray-mid);
+    font-weight: 400;
+  }
+  .reviews-text strong { color: var(--text); font-weight: 600; }
 
-        .hero-inner {
-            max-width: 980px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 44px;
-            align-items: start;
-        }
+  /* ── NEWS LOGOS ── */
+  .news-logos {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    max-width: 440px;
+    opacity: 0.55;
+  }
+  .news-logo {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-family: Georgia, serif;
+    white-space: nowrap;
+  }
 
-        .date-line {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-            color: var(--red);
-        }
+  /* ── HERO RIGHT (image) ── */
+  .hero-right {
+    position: relative;
+  }
+  .hero-img {
+    width: 100%;
+    border-radius: var(--radius);
+    display: block;
+    aspect-ratio: 400/627;
+    background: linear-gradient(160deg, #b8d4e8 0%, #7fa8c8 40%, #5c8ab2 100%);
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-img::after {
+    content: '🏠';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    opacity: 0.3;
+  }
+  .hero-img-label {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(3,66,106,0.85);
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
 
-        .date-line::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--red);
-            animation: blink 1.6s ease-in-out infinite;
-        }
+  /* ── DIVIDER ── */
+  .section-divider {
+    height: 1px;
+    background: var(--gray-light);
+    max-width: 900px;
+    margin: 0 auto;
+  }
 
-        @keyframes blink {
-            50% { opacity: .25; }
-        }
+  /* ── FOOTER ── */
+  .footer {
+    padding: 24px 20px;
+    text-align: center;
+    background: var(--white);
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-size: 13px;
+    color: var(--gray-mid);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .footer-copy {
+    font-size: 13px;
+    color: var(--gray-mid);
+  }
 
-        .hero-headline {
-            margin: 0 0 10px;
-            font-family: var(--font-head);
-            font-weight: 400;
-            font-size: clamp(28px, 4.2vw, 42px);
-            line-height: 1.15;
-            color: var(--navy);
-            text-wrap: balance;
-        }
+  /* ══════════════════════════════════
+     MOBILE STYLES (max-width: 768px)
+  ══════════════════════════════════ */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 24px 16px 32px;
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .hero-right {
+      display: none; /* image hidden on mobile per original layout */
+    }
+    .hero-headline {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .hero-sub {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .cta-btn {
+      max-width: 100%;
+      font-size: 20px;
+      padding: 16px 20px;
+    }
+    .news-logos {
+      max-width: 100%;
+    }
+    .reviews-bar {
+      max-width: 100%;
+    }
+    .urgency-note {
+      font-size: 13px;
+    }
+  }
 
-        .hero-sub {
-            margin: 0 0 26px;
-            font-size: clamp(19px, 2.6vw, 25px);
-            font-weight: 700;
-            line-height: 1.3;
-        }
+  /* ══════════════════════════════════
+     TABLET STYLES (769px – 1024px)
+  ══════════════════════════════════ */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-inner {
+      grid-template-columns: 1fr 300px;
+      gap: 28px;
+    }
+    .hero-headline { font-size: 28px; }
+  }
 
-        /* ---------- Criteria ---------- */
-        .criteria-list {
-            list-style: none;
-            margin: 0 0 26px;
-            padding: 0;
-            display: grid;
-            gap: 12px;
-        }
+  /* ── PULSE ANIMATION FOR CTA ── */
+  @keyframes pulse-border {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(8,160,27,0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(8,160,27,0); }
+  }
+  .cta-btn { animation: pulse-border 2.4s ease infinite; }
+  .cta-btn:hover { animation: none; }
 
-        .criteria-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 17px;
-            line-height: 1.4;
-        }
+  /* ── Reviews strip (HTML version of the reference image, ~386x56) ── */
+  .reviews-strip { display: flex; align-items: center; gap: 6px; padding: 0 16px; min-height: 56px; flex-wrap: wrap; }
+  .rs-score { font-size: 19px; font-weight: 600; color: #333; }
+  .rs-stars { display: inline-flex; gap: 2px; }
+  .rs-stars svg { width: 24px; height: 24px; fill: #f5b400; }
+  .rs-count { font-size: 19px; font-weight: 700; color: #222; text-decoration: underline; text-underline-offset: 2px; }
+  .rs-on { font-size: 13px; font-weight: 600; color: #333; }
+  .rs-g { width: 24px; height: 24px; }
+  @media (max-width: 440px) {
+    .reviews-strip { flex-wrap: nowrap; gap: 4px; padding: 0; justify-content: center; }
+    .rs-score, .rs-count { font-size: 16px; white-space: nowrap; }
+    .rs-stars svg { width: 18px; height: 18px; }
+    .rs-on { font-size: 12px; white-space: nowrap; }
+    .rs-g { width: 20px; height: 20px; flex-shrink: 0; }
+  }
+  .news-strip { margin-top: 8px; max-width: 494px; }
+  .news-strip img { display: block; width: 100%; height: auto; }
 
-        .check {
-            position: relative;
-            flex-shrink: 0;
-            width: 22px;
-            height: 22px;
-            margin-top: 1px;
-            border-radius: 50%;
-            background: var(--green);
-        }
-
-        .check::after {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: 4px;
-            width: 5px;
-            height: 10px;
-            border: solid #fff;
-            border-width: 0 2.5px 2.5px 0;
-            transform: rotate(45deg);
-        }
-
-        /* ---------- Urgency note ---------- */
-        .urgency-note {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            max-width: 460px;
-            margin-bottom: 26px;
-            padding: 12px 14px;
-            border: 1px solid var(--amber-line);
-            border-radius: var(--radius);
-            background: var(--amber-bg);
-            font-size: 15px;
-            line-height: 1.4;
-        }
-
-        .urgency-note svg {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-        }
-
-        /* ---------- CTA ---------- */
-        .cta-btn {
-            display: block;
-            width: 100%;
-            max-width: 460px;
-            padding: 19px 24px;
-            border-radius: var(--radius);
-            background: var(--green);
-            color: #fff;
-            font-size: clamp(19px, 2.6vw, 23px);
-            font-weight: 700;
-            line-height: 1.2;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 4px 0 var(--green-dark);
-            animation: pulse 2.4s ease infinite;
-            transition: background .2s, transform .1s;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .cta-btn:hover {
-            background: #069a19;
-            transform: translateY(-1px);
-            animation: none;
-        }
-
-        .cta-btn:active {
-            transform: translateY(3px);
-            box-shadow: 0 1px 0 var(--green-dark);
-        }
-
-        .cta-btn:focus-visible {
-            outline: 3px solid var(--navy);
-            outline-offset: 3px;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 4px 0 var(--green-dark), 0 0 0 0 rgba(8, 160, 27, .5); }
-            50% { box-shadow: 0 4px 0 var(--green-dark), 0 0 0 10px rgba(8, 160, 27, 0); }
-        }
-
-        /* a choice is in flight */
-        [data-cta][aria-disabled="true"] {
-            pointer-events: none;
-        }
-
-        .cta-btn.is-selected {
-            background: var(--green-dark);
-        }
-
-        /* ---------- Reviews (DUMMY) ---------- */
-        .reviews-bar {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            max-width: 460px;
-            margin-top: 16px;
-        }
-
-        .stars {
-            display: flex;
-            gap: 2px;
-        }
-
-        .stars svg {
-            width: 20px;
-            height: 20px;
-            fill: #f5a623;
-        }
-
-        .reviews-text {
-            font-size: 14px;
-            color: var(--gray-mid);
-        }
-
-        .reviews-text strong {
-            color: var(--text);
-        }
-
-        /* ---------- Trust points ---------- */
-        .trust-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            max-width: 460px;
-            margin-top: 16px;
-        }
-
-        .trust-row span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border: 1px solid var(--gray-line);
-            border-radius: 99px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #3b4248;
-        }
-
-        .trust-row svg {
-            width: 14px;
-            height: 14px;
-            color: var(--green);
-        }
-
-        /* ---------- Right image ---------- */
-        .hero-img {
-            position: relative;
-            display: block;
-            aspect-ratio: 400 / 627;
-            border-radius: var(--radius);
-            overflow: hidden;
-            background: linear-gradient(170deg, #0a609c 0%, #03426a 100%);
-            box-shadow: 0 20px 40px -20px rgba(3, 66, 106, .55);
-        }
-
-        .hero-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: 62% center;
-        }
-
-        .hero-img-label {
-            position: absolute;
-            left: 50%;
-            bottom: 14px;
-            transform: translateX(-50%);
-            padding: 6px 12px;
-            border-radius: 4px;
-            background: rgba(3, 66, 106, .9);
-            color: #fff;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-
-        /* =========================================================
-           FOOTER
-           ========================================================= */
-        .section-divider {
-            max-width: 940px;
-            height: 1px;
-            margin: 0 auto;
-            background: var(--gray-line);
-        }
-
-        .footer {
-            max-width: 940px;
-            margin: 0 auto;
-            padding: 24px 16px 32px;
-            text-align: center;
-        }
-
-        .disclaimer {
-            margin: 0 0 16px;
-            font-size: 12px;
-            line-height: 1.65;
-            color: var(--gray-mid);
-            text-align: left;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px 24px;
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            font-size: 13px;
-            color: var(--gray-mid);
-            text-underline-offset: 2px;
-        }
-
-        .footer-copy {
-            margin: 0;
-            font-size: 13px;
-            color: var(--gray-mid);
-        }
-
-        /* =========================================================
-           RESPONSIVE
-           ========================================================= */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .hero-inner {
-                grid-template-columns: 1fr 300px;
-                gap: 28px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 24px 16px 32px;
-            }
-
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            /* image hidden on mobile, same as the reference layout */
-            .hero-right {
-                display: none;
-            }
-
-            .cta-btn,
-            .urgency-note,
-            .reviews-bar,
-            .trust-row {
-                max-width: 100%;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
-    </style>
+  /* ── Additions to the reference (behavior only) ── */
+  [data-cta][aria-disabled="true"] { pointer-events: none; }
+  .cta-btn:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { .cta-btn { animation: none; } }
+</style>
 </head>
-
 <body>
-    <!--
-      Every element with [data-cta] is a CTA. Its href is set at runtime
-      from GETYOURS_PAGE_CONFIG.ctaUrl (see the config block below).
-      Like the reference, the banner, headline and image are clickable too.
-    -->
 
-    <!-- ===================== ADVERTORIAL TAG ===================== -->
-    <div class="advertorial-bar">Advertorial</div>
+<!--
+  Layout and copy cloned from the reference page.
+  Every element with [data-cta] is a CTA; its href is set at runtime from
+  GETYOURS_PAGE_CONFIG.ctaUrl (see the config block at the bottom).
+-->
 
-    <!-- ===================== HEADER BANNER ===================== -->
-    <header class="header-banner">
-        <a href="#" class="plain-link" data-cta>
-            <!-- DUMMY -->
-            <p class="title">2026 Auto Insurance Savings Check</p>
+<!-- Advertorial tag -->
+<div class="advertorial-bar">Advertorial</div>
+
+<!-- Header banner -->
+<div class="header-banner">
+ <a href="https://trk.viewapproval.com/cf/click/1" data-cta style="text-decoration:none;"> <h1>2026 Gutter Replacement Relief</h1></a>
+</div>
+
+<!-- Red urgency strip -->
+<div class="urgency-bar"></div>
+
+<!-- Hero section -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- LEFT COLUMN -->
+    <div class="hero-left">
+      <a href="https://trk.viewapproval.com/cf/click/1" data-cta style="text-decoration:none;"><h2 class="hero-headline">NEW "2026" Gutters Relief Replacement Service</h2></a>
+      <p class="hero-sub">Helps US Homeowners Get New Gutters</p>
+
+      <!-- Eligibility criteria -->
+      <ul class="criteria-list">
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span>Must be a <strong>homeowner</strong></span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span>Must be a <strong>U.S resident</strong></span>
+        </li>
+        <li>
+          <span class="check" aria-hidden="true"></span>
+          <span>Must live in an <strong>eligible zip code.</strong></span>
+        </li>
+      </ul>
+
+      <!-- Urgency note -->
+      <div class="urgency-note" role="alert">
+        <svg class="warn-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 4L36 34H4L20 4Z" fill="#f0c040" stroke="#c8961a" stroke-width="2"/>
+          <rect x="18.5" y="15" width="3" height="11" rx="1.5" fill="#7a5a00"/>
+          <circle cx="20" cy="29" r="1.8" fill="#7a5a00"/>
+        </svg>
+        <span>Eligible Homeowners Must Apply <strong>Before The Next Backorder</strong></span>
+      </div>
+
+      <!-- CTA button -->
+      <a href="https://trk.viewapproval.com/cf/click/1" target="_top" class="cta-btn" data-cta>
+        Check My Eligibility &gt;&gt;
+      </a>
+
+      <!-- Star reviews: HTML version of the reference's reviews image so the numbers can be edited.
+           >>> EDIT: replace the rating and review count with your real Google figures <<< -->
+      <div class="reviews-bar">
+        <div class="reviews-strip" aria-label="Google rating">
+          <span class="rs-score"><span data-rating>4.9</span> Stars</span>
+          <span class="rs-stars" aria-hidden="true">
+            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg>
+            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z"/></svg>
+          </span>
+          <span class="rs-count" data-review-count>1,152</span>
+          <span class="rs-on">reviews on</span>
+          <svg class="rs-g" viewBox="0 0 48 48" aria-label="Google" role="img">
+            <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"/>
+            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+            <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- News logos (same image as the reference; hotlinked, replace with your own copy for production) -->
+      <div class="news-strip">
+        <a href="https://trk.viewapproval.com/cf/click/1" target="_top" data-cta>
+          <img
+            src="https://convertri.imgix.net/8017bc0b-a96f-11ed-922e-06cea9523c95/6a53c6d86186d60b5a1f457de04d780c89376f0b/416b771e-6d91-11ec-bf38-0697e5ca793e%252F4ba8017d86d54d279e64292acf90bb873468a70e%252Fnewsimage.png%3Fauto%3Dcompress%2Cformat%26fit%3Dscale%26w%3D494%26h%3D114.jpg?auto=compress,format&fit=scale&w=494&h=114"
+            alt="As seen in news"
+            loading="lazy"
+          />
         </a>
-    </header>
+      </div>
+    </div>
 
-    <div class="urgency-bar" aria-hidden="true"></div>
+    <!-- RIGHT COLUMN (desktop only) -->
+    <div class="hero-right" aria-hidden="true">
+      <a href="https://trk.viewapproval.com/cf/click/1" data-cta tabindex="-1"><div class="hero-img">
+        <!-- Image hotlinked from the reference's image host. It can change or disappear
+             at any time; for production, use your own copy, e.g. ../assets/roof.jpg -->
+        <img
+          src="https://convertri.imgix.net/8017bc0b-a96f-11ed-922e-06cea9523c95%2F9da6ae522d898ec7f3e3df1538ea1a98f7439625%2F416b771e-6d91-11ec-bf38-0697e5ca793e%252F75fe20eac91e2bfe461f5cb1321ef89674caf31d%252Froof.png%3Fauto%3Dcompress%2Cformat%26fit%3Dscale%26w%3D400%26h%3D627.jpg?auto=compress,format&fit=scale&w=400&h=627"
+          alt="Home with new gutters"
+          width="400" height="627"
+          style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;"
+          onerror="this.style.display='none'"
+        >
+      </div></a>
+    </div>
 
-    <main>
-        <!-- ===================== HERO ===================== -->
-        <section class="hero">
-            <div class="hero-inner">
+  </div>
+</section>
 
-                <!-- LEFT COLUMN -->
-                <div class="hero-left">
-                    <div class="date-line">Updated <span data-today>today</span></div>
+<!-- Divider -->
+<div class="section-divider"></div>
 
-                    <a href="#" class="plain-link" data-cta>
-                        <!-- DUMMY -->
-                        <h1 class="hero-headline">New 2026 Rate Check Helps Drivers Compare Lower Auto Insurance Rates</h1>
-                    </a>
-                    <!-- DUMMY -->
-                    <p class="hero-sub">See If You Qualify In About A Minute</p>
-
-                    <!-- Eligibility criteria (DUMMY) -->
-                    <ul class="criteria-list">
-                        <li><span class="check" aria-hidden="true"></span><span>Must be a <strong>licensed driver</strong></span></li>
-                        <li><span class="check" aria-hidden="true"></span><span>Must be a <strong>U.S. resident</strong></span></li>
-                        <li><span class="check" aria-hidden="true"></span><span>Must <strong>own or lease a vehicle</strong></span></li>
-                    </ul>
-
-                    <!-- Urgency note (DUMMY) -->
-                    <div class="urgency-note" role="note">
-                        <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                            <path d="M20 4L36 34H4L20 4Z" fill="#f0c040" stroke="#c8961a" stroke-width="2" />
-                            <rect x="18.5" y="15" width="3" height="11" rx="1.5" fill="#7a5a00" />
-                            <circle cx="20" cy="29" r="1.8" fill="#7a5a00" />
-                        </svg>
-                        <span>Rates change often. <strong>Check today's options before they update.</strong></span>
-                    </div>
-
-                    <!-- CTA -->
-                    <a href="#" class="cta-btn" data-cta>Check My Eligibility &gt;&gt;</a>
-
-                    <!-- Star reviews (DUMMY: replace with real, verifiable ratings or remove) -->
-                    <div class="reviews-bar">
-                        <div class="stars" aria-hidden="true">
-                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
-                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
-                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
-                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
-                            <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.5 7.7l5.9-.9z" /></svg>
-                        </div>
-                        <span class="reviews-text"><strong>4.8 out of 5</strong> · 1,234 reviews (sample)</span>
-                    </div>
-
-                    <!-- Trust points (used instead of "as seen in news" logos) -->
-                    <div class="trust-row">
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>100% Free</span>
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>No obligation</span>
-                        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>No SSN to start</span>
-                    </div>
-                </div>
-
-                <!-- RIGHT COLUMN (desktop only) -->
-                <div class="hero-right">
-                    <a href="#" class="hero-img" data-cta tabindex="-1" aria-hidden="true">
-                        <!-- DUMMY image: replace with a 400x627 portrait image -->
-                        <img src="../assets/banner-img.jpg" alt="" width="400" height="627" />
-                        <span class="hero-img-label">Drivers are checking new rates</span>
-                    </a>
-                </div>
-
-            </div>
-        </section>
-    </main>
-
-    <div class="section-divider"></div>
-
-    <!-- ===================== FOOTER ===================== -->
-    <footer class="footer">
-        <p class="disclaimer">
-            <strong>Advertorial. Disclaimer:</strong> Save Auto Info is an insurance quote referral service, not an
-            insurance provider, carrier, or government program. We do not issue policies or bind coverage. Quotes and
-            potential savings are not guaranteed and may not be available to everyone. Actual rates depend on coverage,
-            driving history, vehicle, location, eligibility, and other factors.
-        </p>
-        <nav class="footer-links" aria-label="Footer navigation">
-            <a href="../privacy-policy.html">Privacy Policy</a>
-            <a href="../terms.html">Terms &amp; Conditions</a>
-            <a href="mailto:contact@saveautoinfo.com">contact@saveautoinfo.com</a>
-        </nav>
-        <p class="footer-copy">&copy; <span data-year>2026</span> Save Auto Info</p>
-    </footer>
+<!-- Footer -->
+<footer class="footer">
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms &amp; Conditions</a>
+  </nav>
+  <p class="footer-copy">© 2026 – Save Auto Info</p>
+</footer>
 
 
     <!-- =========================================================
@@ -561,10 +505,9 @@
       metaTrackingEnabled: true,
       metaPixelId: "2214758409422215",
 
-      // >>> PASTE CTA URL HERE (e.g. "https://trk.example.com/cf/click/1") <<<
-      // Every [data-cta] link on the page uses this URL.
-      // While empty, links do nothing and no Lead event is sent.
-      ctaUrl: ""
+      // ClickFlare CTA: every [data-cta] link on the page uses this URL.
+      // If emptied, links do nothing and no Lead event is sent.
+      ctaUrl: "https://trk.viewapproval.com/cf/click/1"
     };
     </script>
 
@@ -647,25 +590,17 @@
       // Re-enable links when the visitor returns with the back button.
       window.addEventListener("pageshow", resetCtas);
 
-      var today = document.querySelector("[data-today]");
-      if (today) {
-        try {
-          today.textContent = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
-        } catch (e) { /* keep fallback text */ }
-      }
-      var year = document.querySelector("[data-year]");
-      if (year) year.textContent = String(new Date().getFullYear());
     })();
     </script>
 
     <!-- =========================================================
-         3) TRACKING TAG  ← paste the ClickFlare (or other) tag here
-            Paste the full <script>...</script> below this comment.
+         3) TRACKING TAG: ClickFlare landing-page tag.
             Must stay AFTER the page logic above.
-            Paste it from a code block so backticks (`) are not lost.
          ========================================================= -->
-
+    <script>
+    // ClickFlare landing-page tag supplied by the site owner.
+!function(){"use strict";const e="lp_ref",t="cpid",n="lpurl",c="https://trk.viewapproval.com",r="(?<domain>http(?:s?)://[^/]*)/cf/click",i="(?:(?:/(?<cta>[a-zA-Z0-9_-]+)/?)|(?:/))?",s=`^${r}${i}(?:$|(\\?.*))`,o=`javascript:window.clickflare.l="(?<original_link>${r}${i}("|(\\?[^"]*"))).*`,a=()=>new RegExp(s,""),l=()=>new RegExp(o,"");function u(e){const t=e.match(l());if(t){const{original_link:n}=t.groups||{};if(n){return n.slice(0,-1)}return e}return e}function d(e){const t=function(e){return e.replace(a(),(e,...t)=>{const{domain:n}=t[t.length-1];return e.replace(n,c)})}(e);return`javascript:window.clickflare.l="${t}"; void 0;`}function f(e,t){if(t&&e&&t.apply(document,[e]),/loaded|interactive|complete/.test(document.readyState))for(let n=0,c=document.links.length;n<c;n++)if(a().test(document.links[n].href)){const e=document.links[n];window.clickflare.links_replaced.has(e)||(e.href=d(e.href),window.clickflare.links_replaced.add(e))}}!function(r,i){const s=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(e,t){const n=this.listeners[e]||[];n.includes(t)||n.push(t),this.listeners[e]=n},dispatchEvent:function(e,t){t&&(this.customParams[e]=t),(this.listeners[e]||[]).forEach(e=>e(t))},push:function(e,t){t&&(this.customParams[e]=t),(this.listeners[e]||[]).forEach(e=>e(t))}},document.onreadystatechange=e=>f(e,s),f(null,s),setTimeout(()=>{!function(r,i){const s=function(r,i){const s=new URL(`${c}${r}`);(function(e){const t="{",n=t+t,c="_",r=c+c;return e.startsWith(n)||e.startsWith(r)})(i)||s.searchParams.set(t,i);return s.searchParams.append(e,document.referrer),s.searchParams.append(n,location.href),s.searchParams.append("lpt",document.title),s.searchParams.append("t",(new Date).getTime().toString()),s.toString()}(r,i),o=document.createElement("script"),a=document.scripts[0];o.async=1,o.src=s,o.onerror=()=>{!function(){for(let e=0,t=document.links.length;e<t;e++){const t=document.links[e];l().test(decodeURI(t.href))&&setTimeout(()=>{t&&t.setAttribute("href",u(decodeURI(t.href)))})}}()},a.parentNode?.insertBefore(o,a)}(r,i)}))}(`/cf/tags/${new URL(window.location.href).searchParams.get("cftmid")||"__CONTAINER_ID__"}`,function(){const e=new URL(window.location.href).searchParams.get(t),n=function(){const e=new RegExp("(^| )cf_cpid=([^;]+)"),t=document.cookie.match(e);return t&&t.pop()||null}();return e||n||"__CAMPAIGN_ID__"}())}();
+    </script>
     <!-- /TRACKING TAG -->
 </body>
-
 </html>
