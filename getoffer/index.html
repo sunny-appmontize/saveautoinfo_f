@@ -301,10 +301,7 @@ window.AUTOQUOTE_CONFIG = {
       // Leave the default anchor action intact. ClickFlare rewrites href to its
       // own handler and restores the direct URL if its network tag fails.
       // Do not replace that action with a raw location.assign redirect.
-      // Send one Meta Lead per CTA click (no insurance answer or personal data).
-      if (started && typeof window.fbq === "function") {
-        window.fbq("trackSingle", pixelId, "Lead");
-      }
+      // Meta Pixel on this page sends PageView only; no Lead on CTA click.
     });
   });
   window.addEventListener("pageshow", function () {

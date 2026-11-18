@@ -21,7 +21,7 @@ const server = http.createServer((req,res)=>{
   try{
     for(const failTag of [false,true]) for(const label of ['YES','NO']){
       const context=await browser.newContext();
-      // Fresh visitors get PageView automatically; each CTA click sends one Lead.
+      // /getoffer/ sends PageView only; CTA clicks send no Lead.
       let metaRequests=0,tagRequest,clicks=0,tagSeen;
       const tagReady=new Promise(resolve=>{tagSeen=resolve;});
       await context.route(/https:\/\/.*facebook\.(net|com)\//,r=>{metaRequests++;return r.fulfill({contentType:'application/javascript',body:'/* Meta stub: events remain in queue for assertions. */'});});
@@ -50,7 +50,7 @@ const server = http.createServer((req,res)=>{
         assert.equal(clicks,0,'Must use vendor setter, not direct navigation');
         assert.equal(await page.evaluate(()=>typeof window.fbq),'function');
         const events=await page.evaluate(()=>fbq.queue.filter(e=>e[0]==='trackSingle').map(e=>Array.from(e)));
-        assert.deepEqual(events,[['trackSingle','2214758409422215','PageView'],['trackSingle','2214758409422215','Lead']]);
+        assert.deepEqual(events,[['trackSingle','2214758409422215','PageView']],'getoffer: PageView only, no Lead');
         await page.evaluate(()=>{window.testClickflareHandled=null;document.querySelector('[data-lead-choice]').click();});
         assert.equal(await page.evaluate(()=>window.testClickflareHandled),null,'Duplicate click blocked');
         await page.evaluate(()=>window.dispatchEvent(new PageTransitionEvent('pageshow')));
@@ -211,6 +211,6 @@ const server = http.createServer((req,res)=>{
     }
     await page.goto(base+'/');assert.equal((await page.locator('body').innerText()).trim(),'Happy World!');assert.equal(await page.locator('script').count(),0);
     await context.close();
-    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, automatic PageView plus one Lead per CTA click without popup, responsive layouts, /quote/ ClickFlare CTAs (all types, fallback, Lead, duplicate guard), /getyours/ ClickFlare CTAs with Lead, /test/ ClickFlare-only CTA, policy return links, and root page.');
+    console.log('PASS: both ClickFlare-managed CTAs, tag failure fallback, campaign parameters, duplicate guard, back navigation reset, /getoffer/ PageView only (no Lead) without popup, responsive layouts, /quote/ ClickFlare CTAs (all types, fallback, Lead, duplicate guard), /getyours/ ClickFlare CTAs with Lead, /test/ ClickFlare-only CTA, policy return links, and root page.');
   }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;}).finally(()=>server.close());

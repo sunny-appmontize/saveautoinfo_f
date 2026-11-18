@@ -10,7 +10,7 @@ Serve locally with `python3 -m http.server 8080` and open `http://localhost:8080
 
 - Pixel `2214758409422215` is enabled in the inline `window.AUTOQUOTE_CONFIG` block and sends one PageView automatically on each HTTP(S) page load of `/getoffer/`, `/privacy-policy.html` and `/terms.html`. The root homepage has no scripts.
 - All scripts are inlined directly in the HTML (no separate `.js` files) so updates are not held back by cached scripts. When changing the config or tracking code, update it in all three pages.
-- There is no consent popup, preference panel, or consent-grant event. Each YES/NO click sends one Meta `Lead` event (no answer or personal data); a duplicate click is blocked. Automatic event configuration is disabled.
+- There is no consent popup, preference panel, or consent-grant event. The Meta Pixel sends PageView only; YES/NO clicks send no `Lead` event. A duplicate click is blocked. Automatic event configuration is disabled.
 - Global Privacy Control, Do Not Track, ad blockers, and network restrictions can prevent loading. URL parameters do not affect loading, so any ClickFlare or ad parameters (`lptoken`, `cep`, `cpid`, `ad_name`, etc.) work. Never put personal information in URLs.
 - The site does not read or write the former consent preference. Existing stored choices do not gate initialization.
 - This configuration does not guarantee legal/platform compliance; consent obligations depend on the audience and applicable requirements.
@@ -24,7 +24,7 @@ No legal operator name has been provided. The contact email is published, but th
 
 At the owner’s request, the original flag, savings claims, customer count, review logos, static “Real-Time Quotes” table, and supplied testimonials have been restored on `/getoffer/`. These figures and testimonials have not been independently verified. The table is static, and the Terms disclose that it is not a live insurer feed. Substantiate the claims and review permissions before advertising.
 
-After hosting on HTTPS, verify the domain and Pixel in your Meta account as applicable. Use Events Manager Test Events with a browser that permits measurement: confirm automatic PageView, click YES or NO, and confirm that one Lead event is sent. Test browser privacy signals separately: no Pixel should load, and the CTA should still work. Review any extra events configured remotely in your account. Live Meta receipt has not been verified from this workspace.
+After hosting on HTTPS, verify the domain and Pixel in your Meta account as applicable. Use Events Manager Test Events with a browser that permits measurement: confirm automatic PageView, click YES or NO, and confirm that no Lead event is sent. Test browser privacy signals separately: no Pixel should load, and the CTA should still work. Review any extra events configured remotely in your account. Live Meta receipt has not been verified from this workspace.
 
 ## Automated checks
 
@@ -53,7 +53,7 @@ To change them, edit only two marked spots in `quote/index.html`:
 1. **CTA URL** (currently `https://trk.viewapproval.com/cf/click/1`): set `ctaUrl` in the `QUOTE_PAGE_CONFIG` block (section 1). While it is empty, CTAs do nothing and no Lead is sent (a console warning is logged).
 2. **Tracking tag** (currently the same trk.viewapproval.com ClickFlare tag as `/getoffer/`): paste the full `<script>…</script>` in section 3, between `TRACKING TAG` and `/TRACKING TAG`. Keep it after the page logic so the CTA hrefs are set before the tag rewrites them. Paste from a code block so the backticks survive.
 
-Meta behavior matches `/getoffer/`: PageView on load, and one `Lead` per CTA click with duplicates blocked. Both are skipped under GPC/DNT. It uses the same Pixel ID by default (`metaPixelId` in the config).
+Meta behavior: PageView on load, and one `Lead` per CTA click with duplicates blocked. Both are skipped under GPC/DNT. It uses the same Pixel ID by default (`metaPixelId` in the config).
 
 ## `/getyours/` advertorial page
 
